@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast — GTA-style Cover Studio</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <aside class="controls" id="controls">
+    <h1>Neon Coast</h1>
+    <p class="tagline">Turn your photos and a caption into multi-panel cover art in the style of a Vice City sunset — bold lettering, neon grades, comic gutters. Runs fully offline; your photos never leave this machine.</p>
+
+    <section class="group">
+      <h2>1 · Photos</h2>
+      <label class="file-label">Add photos <input id="photo" type="file" accept="image/*" multiple></label>
+      <div class="thumbs" id="thumbs"></div>
+      <div class="samples" id="samples">
+        <span>Try a sample:</span>
+        <button type="button" data-sample="pier">Pier</button>
+        <button type="button" data-sample="boulevard">Boulevard</button>
+      </div>
+      <button type="button" id="fill-all" class="ghost">Fill all panels with one photo</button>
+      <p class="note">Click a thumbnail to place it in the selected panel. Click a panel on the cover to select it.</p>
+    </section>
+
+    <section class="group">
+      <h2>2 · Layout</h2>
+      <div class="button-row" id="layouts">
+        <button type="button" data-layout="cover-story" class="active">Cover Story</button>
+        <button type="button" data-layout="six-panel">Six Panel</button>
+        <button type="button" data-layout="duo">Duo</button>
+        <button type="button" data-layout="hero">Hero</button>
+      </div>
+    </section>
+
+    <section class="group">
+      <h2>3 · Selected panel</h2>
+      <p class="panel-label" id="panel-label">Panel 1 of 4 — empty</p>
+      <label>Zoom <input id="zoom" type="range" min="0.8" max="3" step="0.01" value="1"></label>
+      <label>Move left / right <input id="panx" type="range" min="-0.6" max="0.6" step="0.01" value="0"></label>
+      <label>Move up / down <input id="pany" type="range" min="-0.6" max="0.6" step="0.01" value="0"></label>
+      <div class="button-row wrap" id="grades"></div>
+      <div class="button-row">
+        <button type="button" id="flip" class="ghost">Flip photo</button>
+        <button type="button" id="clear-panel" class="ghost">Clear panel</button>
+      </div>
+      <p class="note">Tip: drag on a panel to move its photo, scroll over it to zoom.</p>
+    </section>
+
+    <section class="group">
+      <h2>4 · Caption</h2>
+      <label>Title <input id="caption" type="text" maxlength="32" value="Sunset Heist"></label>
+      <label>Tagline <input id="subtitle" type="text" maxlength="40" value="NEON COAST"></label>
+      <div class="button-row" id="title-colors">
+        <button type="button" data-color="white" class="active swatch white" title="White">White</button>
+        <button type="button" data-color="sunset" class="swatch sunset" title="Sunset">Sunset</button>
+        <button type="button" data-color="neon" class="swatch neon" title="Neon">Neon</button>
+        <button type="button" data-color="gold" class="swatch gold" title="Gold">Gold</button>
+      </div>
+    </section>
+
+    <section class="group">
+      <h2>5 · Export</h2>
+      <div class="button-row" id="sizes">
+        <button type="button" data-size="square" class="active">1080 × 1080</button>
+        <button type="button" data-size="portrait">1080 × 1350</button>
+        <button type="button" data-size="wide">1920 × 1080</button>
+      </div>
+      <button type="button" id="export" class="primary">Export PNG</button>
+      <button type="button" id="export-all" class="ghost">Export all 3 sizes</button>
+      <p id="status" role="status"></p>
+    </section>
+
+    <p class="fineprint">Original artwork made from your photos. Not affiliated with Rockstar Games. The display font is Noto Sans Condensed Black (SIL Open Font License, see fonts/OFL.txt).</p>
+  </aside>
+  <section class="stage">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+    <p class="hint">Click a panel to select it · drag to move the photo · scroll to zoom</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

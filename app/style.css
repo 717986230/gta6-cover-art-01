@@ -1,0 +1,57 @@
+@font-face {
+  font-family: "CoverDisplay";
+  src: url("./fonts/CoverDisplay-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: #14081f; color: #f4eef7; font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+.app { display: flex; height: 100vh; }
+
+.controls { width: 340px; flex: 0 0 340px; padding: 22px 20px 28px; background: linear-gradient(180deg, #1d1030 0%, #14081f 100%); border-right: 1px solid rgba(255, 255, 255, 0.09); overflow-y: auto; }
+.controls h1 { margin: 0; font-family: "CoverDisplay", "Arial Black", sans-serif; font-size: 34px; letter-spacing: 0.04em; text-transform: uppercase; background: linear-gradient(90deg, #ffd166, #ff5e78 55%, #ff5ce1); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.tagline { margin: 6px 0 0; color: #c9b8d4; font-size: 13.5px; }
+.group { margin-top: 22px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.09); }
+.group h2 { margin: 0 0 10px; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #ffd166; }
+.group label { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; font-weight: 600; font-size: 13.5px; }
+input[type=text] { font: inherit; padding: 9px 10px; border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 8px; background: rgba(255, 255, 255, 0.06); color: #fff; }
+input[type=text]:focus { outline: 2px solid #ff5ce1; outline-offset: 1px; }
+input[type=range] { accent-color: #ff5ce1; }
+.file-label { display: inline-block; padding: 10px 14px; border-radius: 8px; background: #fff; color: #14081f; font-weight: 700; cursor: pointer; }
+.file-label input { display: none; }
+button { font: inherit; font-weight: 700; padding: 9px 12px; border: 0; border-radius: 8px; background: rgba(255, 255, 255, 0.1); color: #f4eef7; cursor: pointer; }
+button:hover { background: rgba(255, 255, 255, 0.18); }
+button.active { background: #ff5ce1; color: #14081f; }
+button.primary { width: 100%; margin-top: 8px; padding: 12px; background: linear-gradient(90deg, #ff7e5f, #ff5ce1); color: #fff; font-size: 16px; }
+button.ghost { width: 100%; margin-top: 8px; }
+.button-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.button-row.wrap button { flex: 1 1 auto; }
+#layouts button, #sizes button { flex: 1 1 auto; padding: 9px 6px; font-size: 13px; }
+.thumbs { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 4px; min-height: 64px; }
+.thumb { width: 64px; height: 64px; padding: 0; overflow: hidden; border-radius: 8px; border: 2px solid transparent; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.thumb:hover { border-color: #ffd166; }
+.thumb-hint { color: #8d7a9c; font-size: 13px; align-self: center; }
+.samples { display: flex; align-items: center; gap: 8px; margin: 6px 0 10px; color: #c9b8d4; font-size: 13.5px; }
+.samples button { padding: 6px 12px; font-size: 13px; }
+.note { margin: 8px 0 0; color: #8d7a9c; font-size: 12.5px; }
+.panel-label { margin: 0 0 10px; color: #c9b8d4; font-size: 13.5px; }
+.swatch.white { background: #fff; color: #14081f; }
+.swatch.sunset { background: linear-gradient(90deg, #ffd166, #ff5e78); color: #14081f; }
+.swatch.neon { background: linear-gradient(90deg, #7df9ff, #ff5ce1); color: #14081f; }
+.swatch.gold { background: linear-gradient(90deg, #fff3b0, #f5a623); color: #14081f; }
+#status { margin: 10px 0 0; min-height: 20px; color: #7df9ff; font-size: 13.5px; }
+.fineprint { margin: 22px 0 0; color: #6f5d7d; font-size: 12px; }
+
+.stage { flex: 1; min-height: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 28px; background: radial-gradient(1200px 700px at 70% 20%, #2a1544 0%, #14081f 60%); }
+#cover { max-width: min(100%, calc(100vh - 140px)); max-height: calc(100vh - 140px); aspect-ratio: auto; box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.08); cursor: crosshair; }
+.hint { margin: 0; color: #8d7a9c; font-size: 13px; }
+
+/* Screenshot mode: the cover alone, filling the viewport. */
+body.shot-cover { background: #0d0714; }
+body.shot-cover .controls, body.shot-cover .hint { display: none; }
+body.shot-cover .app { padding: 0; }
+body.shot-cover .stage { padding: 0; background: #0d0714; }
+body.shot-cover #cover { width: 100vw; height: 100vh; max-width: none; max-height: none; object-fit: contain; box-shadow: none; }
